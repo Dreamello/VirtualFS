@@ -1,0 +1,85 @@
+Sector size (in bytes): 512
+Sectors per cluster   : 4
+Reserved sectors      : 1
+Hidden sectors        : 0
+First sector in FAT   : 1
+Sectors per FAT copy  : 4
+Number of FAT copies  : 2
+1st sector of root dir: 9
+Entries in root dir   : 512
+Sectors in root dir   : 32
+Sector of cluster zero: 33
+
+=== FILE ALLOCATION TABLE ===
+0000:  ff8 fff 0ff fff fff fff fff 008 fff fff fff fff 00d fff fff 000
+0010:  000 000 000 000 000 016 017 018 019 01a 01b 01c 01d 01e 01f 020
+0020:  021 022 023 024 025 026 027 028 029 02a 02b 02c 02d 02e 02f 030
+0030:  031 032 033 034 035 036 037 038 039 03a 03b 03c 03d 03e 03f 040
+0040:  041 042 043 044 045 046 047 048 049 04a 04b 04c 04d 04e 04f 050
+0050:  051 052 053 054 055 056 057 058 059 05a 05b 05c 05d 05e 05f 060
+0060:  061 062 063 064 065 066 067 068 069 06a 06b 06c 06d 06e 06f 070
+0070:  071 072 073 074 075 076 077 078 079 07a 07b 07c 07d 07e 07f 080
+0080:  081 082 083 084 085 086 087 088 089 08a 08b 08c 08d 08e 08f 090
+0090:  091 092 093 094 095 096 097 098 099 09a 09b 09c 09d 09e 09f 0a0
+00a0:  0a1 0a2 0a3 0a4 0a5 0a6 0a7 0a8 0a9 0aa 0ab 0ac 0ad 0ae fff 000
+00b0:  0b1 0b2 0b3 0bb 0b5 0b6 0b7 0b8 0b9 0ba fff 0bc 0bd fff 000 fff
+00c0:  fff fff fff fff 000 fff 105 fff fff fff fff fff fff fff fff fff
+00d0:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+00e0:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+00f0:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+0100:  fff fff fff fff fff 146 fff fff fff fff fff fff fff fff fff fff
+0110:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+0120:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+0130:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+0140:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+0150:  fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff fff
+0160:  fff fff fff 000 000 000 000 000 000 000 000 000 000 000 000 000
+0170:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0180:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0190:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+01a0:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+01b0:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+01c0:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+01d0:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+01e0:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+01f0:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0200:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0210:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0220:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0230:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0240:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0250:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0260:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0270:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0280:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+0290:  000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
+02a0:  000 000 000 000 000 000 000 000 000 000
+
+First entry in root directory:
+  File name    : ASS1
+  Creation time: Sat Dec  4 16:52:52 2010
+
+  File size    : 0
+  File type    : DIRECTORY
+  First cluster: 003
+
+Finding file /ASS3/MSCHEME2.TXT:
+  File name    : MSCHEME2.TXT
+  Creation time: Sat Dec  4 16:52:20 2010
+
+  File size    : 1960
+  File type    : REGULAR FILE
+  First cluster: 00b
+
+Finding file /LARGEDIR/FILE066.TXT:
+  File name    : FILE066.TXT
+  Creation time: Sun Dec 26 12:33:16 2010
+
+  File size    : 30
+  File type    : REGULAR FILE
+  First cluster: 152
+
+===== CONTENT =====
+Values of i and j are 6 and 6
+
+===================
