@@ -31,7 +31,7 @@
  */
 volume_t *open_volume_file(const char *filename) {
   
-  /* TO BE COMPLETED BY THE STUDENT */
+
   
   // Open file
   int fd = open(filename, O_RDWR); // Bonus functions require read + write
@@ -77,7 +77,7 @@ volume_t *open_volume_file(const char *filename) {
  */
 void close_volume_file(volume_t *volume) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   close(volume->fd);
   free(volume->groups);
@@ -103,7 +103,7 @@ void close_volume_file(volume_t *volume) {
  */
 ssize_t read_block(volume_t *volume, uint32_t block_no, uint32_t offset, uint32_t size, void *buffer) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // If sparse data
   if (block_no == 0) {
@@ -131,7 +131,7 @@ ssize_t read_block(volume_t *volume, uint32_t block_no, uint32_t offset, uint32_
  */
 ssize_t read_inode(volume_t *volume, uint32_t inode_no, inode_t *buffer) {
   
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Calculate block group number and offset for given inode
   uint32_t group_num = (inode_no - 1) / volume->super.s_inodes_per_group;
@@ -161,7 +161,7 @@ ssize_t read_inode(volume_t *volume, uint32_t inode_no, inode_t *buffer) {
 static uint32_t read_ind_block_entry(volume_t *volume, uint32_t ind_block_no,
 				     uint32_t index) {
   
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   uint8_t buffer[4];
   if (read_block(volume, ind_block_no, index * 4, 4, buffer) == 4)
@@ -187,7 +187,7 @@ static uint32_t read_ind_block_entry(volume_t *volume, uint32_t ind_block_no,
  */
 static uint32_t get_inode_block_no(volume_t *volume, inode_t *inode, uint64_t block_idx) {
   
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Calculate indirect block sizes
   uint64_t indirect1_size = volume->block_size / 4;
@@ -236,7 +236,7 @@ static uint32_t get_inode_block_no(volume_t *volume, inode_t *inode, uint64_t bl
  */
 ssize_t read_file_block(volume_t *volume, inode_t *inode, uint64_t offset, uint64_t max_size, void *buffer) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // If file is a symlink and filesize is < 60, directly read from inode
   if ((inode->i_mode & S_IFMT) == S_IFLNK && inode_file_size(volume, inode) < 60) {
@@ -317,7 +317,7 @@ uint32_t follow_directory_entries(volume_t *volume, inode_t *inode, void *contex
 				  dir_entry_t *buffer,
 				  int (*f)(const char *name, uint32_t inode_no, void *context)) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Check if inode is a directory
   if ((inode->i_mode & S_IFMT) != S_IFDIR) return 0;
@@ -398,7 +398,7 @@ uint32_t find_file_in_directory(volume_t *volume, inode_t *inode, const char *na
  */
 uint32_t find_file_from_path(volume_t *volume, const char *path, inode_t *dest_inode) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Root directory
   if (strcmp(path, "/") == 0) {
@@ -433,7 +433,7 @@ uint32_t find_file_from_path(volume_t *volume, const char *path, inode_t *dest_i
 
 int32_t split_path_components(char ***path_components, const char *path) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   int count = 0; // component counter
   char *copy = strdup(path); // create a copy of pathname since strtok modifies the given string
@@ -467,7 +467,7 @@ int32_t split_path_components(char ***path_components, const char *path) {
 
 void free_path_components(char **path_components, int count) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   for (int i = 0; i < count; i++)
     free(path_components[i]);
@@ -494,14 +494,14 @@ void free_path_components(char **path_components, int count) {
  */
 ssize_t write_block(volume_t *volume, uint32_t block_no, uint32_t offset, uint32_t size, void *buffer) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   return pwrite(volume->fd, buffer, size, block_no * volume->block_size + offset);
 }
 
 ssize_t zero_block(volume_t *volume, uint32_t block_no) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   uint8_t buf[volume->block_size]; 
   memset(buf, 0, volume->block_size);
@@ -510,7 +510,7 @@ ssize_t zero_block(volume_t *volume, uint32_t block_no) {
 
 ssize_t write_inode(volume_t *volume, uint32_t inode_no, inode_t *buffer) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   // Calculate block group number and offset for given inode
   uint32_t group_num = (inode_no - 1) / volume->super.s_inodes_per_group;
@@ -524,7 +524,7 @@ ssize_t write_inode(volume_t *volume, uint32_t inode_no, inode_t *buffer) {
 
 int32_t update_superblock(volume_t *volume, uint32_t offset, uint32_t size, void *buffer) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   // Update in-memeory copy of superblock
   memcpy((u_int8_t *) &volume->super + offset, buffer, size);
@@ -540,7 +540,7 @@ int32_t update_superblock(volume_t *volume, uint32_t offset, uint32_t size, void
 
 int32_t update_group_desc_table(volume_t *volume, uint32_t group_no, uint32_t offset, uint32_t size, void *buffer) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   // Update in-memeory copy of block group descriptor table
   memcpy((u_int8_t *) &volume->groups[group_no] + offset, buffer, size);
@@ -555,7 +555,7 @@ int32_t update_group_desc_table(volume_t *volume, uint32_t group_no, uint32_t of
 
 int32_t update_bitmap(volume_t *volume, uint32_t block_no, uint32_t block_index, uint8_t value) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   // Calculate indices
   uint32_t byte_index = block_index / 8;
@@ -578,7 +578,7 @@ int32_t update_bitmap(volume_t *volume, uint32_t block_no, uint32_t block_index,
 
 int32_t update_links_count(volume_t *volume, uint32_t inode_no, int32_t change) {
   
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   // Read inode into buffer
   inode_t buffer;
@@ -608,7 +608,7 @@ int32_t update_links_count(volume_t *volume, uint32_t inode_no, int32_t change) 
 
 int32_t update_block_state(volume_t *volume, uint32_t block_no, int32_t change, uint8_t value) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   uint32_t group_no = (block_no - volume->super.s_first_data_block) / volume->super.s_blocks_per_group;
   uint32_t block_index = (block_no - volume->super.s_first_data_block) % volume->super.s_blocks_per_group;
@@ -622,7 +622,7 @@ int32_t update_block_state(volume_t *volume, uint32_t block_no, int32_t change, 
 
 int32_t update_inode_state(volume_t *volume, uint32_t inode_no, inode_t *inode, int32_t change, uint8_t value) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   // Calculate group number and inode index
   uint32_t group_no = (inode_no - 1) / volume->super.s_inodes_per_group;
@@ -657,7 +657,7 @@ int32_t update_inode_state(volume_t *volume, uint32_t inode_no, inode_t *inode, 
 
 int32_t free_data_blocks(volume_t *volume, inode_t *inode) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   uint64_t blocks = (inode_file_size(volume, inode) + volume->block_size - 1) / volume->block_size;
   uint32_t block_no;
@@ -673,7 +673,7 @@ int32_t free_data_blocks(volume_t *volume, inode_t *inode) {
 
 int32_t free_indirect_blocks(volume_t *volume, inode_t *inode) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   uint32_t blocks = (inode_file_size(volume, inode) + volume->block_size - 1) / volume->block_size;
   uint32_t count = 12;
@@ -689,7 +689,7 @@ int32_t free_indirect_blocks(volume_t *volume, inode_t *inode) {
 
 int32_t free_indirect_block(volume_t *volume, uint32_t block_no, uint32_t total_blocks, uint8_t level) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
   
   // Base case when level of indirection is 1
   if (level == 1) {
@@ -719,7 +719,7 @@ int32_t free_indirect_block(volume_t *volume, uint32_t block_no, uint32_t total_
 int32_t create_indirect_block_entry(volume_t *volume, uint32_t new_entry, uint32_t indirect_block_no, 
                                     uint32_t inode_no, uint32_t block_idx, uint8_t level) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   if (level == 1) {
     write_block(volume, indirect_block_no, block_idx * 4, 4, &new_entry);
@@ -751,7 +751,7 @@ int32_t create_indirect_block_entry(volume_t *volume, uint32_t new_entry, uint32
 int32_t create_directory_entry(volume_t *volume, const char *name, uint32_t inode_no, inode_t *inode, 
                                uint32_t parent_inode_no, inode_t *parent_inode, uint8_t empty) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Create directory entry
   dir_entry_t new_entry;
@@ -816,7 +816,7 @@ int32_t create_directory_entry(volume_t *volume, const char *name, uint32_t inod
 int32_t modify_directory_entry(volume_t *volume, const char *newname, uint32_t new_inode_no, 
                                const char *oldname, uint32_t parent_inode_no, inode_t *parent_inode) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   char buffer[volume->block_size];
   uint8_t oldlen;
@@ -860,7 +860,7 @@ int32_t modify_directory_entry(volume_t *volume, const char *newname, uint32_t n
 
 int32_t remove_directory_entry(volume_t *volume, const char *path) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   char name[256];
   get_last_component(name, path, 255);
@@ -907,21 +907,21 @@ int32_t remove_directory_entry(volume_t *volume, const char *path) {
 
 static int check_empty(const char *name, uint32_t inode_no, void *context) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   return !(strcmp(name, ".") == 0 || strcmp(name, "..") == 0);
 }
 
 int32_t is_directory_empty(volume_t *volume, inode_t *inode) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   return !follow_directory_entries(volume, inode, NULL, NULL, check_empty);
 }
 
 int32_t get_last_component(char *name, const char *path, int32_t max_len) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   char *last_slash = strrchr(path, '/');
   if (*(++last_slash) == '\0') return -1;
@@ -935,7 +935,7 @@ int32_t get_last_component(char *name, const char *path, int32_t max_len) {
 
 int32_t find_zero_bit(volume_t *volume, uint32_t block_no, uint32_t entries_per_group) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   uint8_t buf[(entries_per_group + 7) / 8]; // quick ceiling
   read_block(volume, block_no, 0, (entries_per_group + 7) / 8, buf);
@@ -948,7 +948,7 @@ int32_t find_zero_bit(volume_t *volume, uint32_t block_no, uint32_t entries_per_
 
 uint32_t find_free_block(volume_t *volume, uint32_t preferred_inode_no) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   if (volume->super.s_free_blocks_count == 0) return 0; // File system has no free blocks remaining
 
@@ -1007,7 +1007,7 @@ uint32_t find_free_inode(volume_t *volume, uint32_t preferred_inode_no) {
 
 uint32_t find_parent_from_path(volume_t *volume, const char *path, inode_t *dest_inode) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   if (strcmp(path, "/") == 0) return 0;
 
@@ -1030,7 +1030,7 @@ uint32_t find_parent_from_path(volume_t *volume, const char *path, inode_t *dest
 
 uint32_t overflow_directory(volume_t *volume, inode_t *parent_inode, uint32_t parent_inode_no) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   uint32_t size = inode_file_size(volume, parent_inode);
   if (UINT32_MAX - size < volume->block_size) return 0;
@@ -1131,7 +1131,7 @@ uint32_t overflow_directory(volume_t *volume, inode_t *parent_inode, uint32_t pa
 
 uint32_t modify_time(volume_t *volume, uint32_t inode_no, inode_t *inode, time_t* ctime, time_t* mtime) {
 
-  /* TO BE COMPLETED BY THE STUDENT */  
+  
 
   if (ctime != NULL)
     inode->i_ctime = (uint32_t) *ctime;

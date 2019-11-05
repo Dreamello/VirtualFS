@@ -100,7 +100,7 @@ static void ext2_destroy(void *private_data) {
  */
 static int ext2_getattr(const char *path, struct stat *stbuf) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Find inode based on given path
   inode_t inode;
@@ -150,7 +150,7 @@ static int ext2_getattr(const char *path, struct stat *stbuf) {
 static int ext2_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
                          off_t offset, struct fuse_file_info *fi) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
   
   // Find inode based on given path
   inode_t inode;
@@ -205,7 +205,7 @@ static int ext2_open(const char *path, struct fuse_file_info *fi) {
   if (fi->flags & O_WRONLY || fi->flags & O_RDWR)
     return -EACCES;
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Find inode based on given path
   inode_t *inode = malloc(sizeof(inode_t));
@@ -233,7 +233,7 @@ static int ext2_open(const char *path, struct fuse_file_info *fi) {
  */
 static int ext2_release(const char *path, struct fuse_file_info *fi) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
   free((inode_t *) fi->fh);
   return 0; // Function not implemented
 }
@@ -264,7 +264,7 @@ static int ext2_release(const char *path, struct fuse_file_info *fi) {
 static int ext2_read(const char *path, char *buf, size_t size, off_t offset,
 		      struct fuse_file_info *fi) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   inode_t *inode = (inode_t *) fi->fh;
   if (offset > inode_file_size(volume, inode)) return 0;
@@ -291,7 +291,7 @@ static int ext2_read(const char *path, char *buf, size_t size, off_t offset,
  */
 static int ext2_readlink(const char *path, char *buf, size_t size) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Find inode based on given path
   inode_t inode;
@@ -314,7 +314,7 @@ static int ext2_readlink(const char *path, char *buf, size_t size) {
  */
 static int ext2_unlink(const char *path) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Find inode based on given path
   inode_t inode;
@@ -335,7 +335,7 @@ static int ext2_unlink(const char *path) {
  */
 static int ext2_rmdir(const char *path) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // Find inode based on given path, perform initial checks
   inode_t inode;
@@ -358,7 +358,7 @@ static int ext2_rmdir(const char *path) {
  */
 static int ext2_mkdir(const char *path, mode_t mode) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   if (find_file_from_path(volume, path, NULL) != 0) return -EEXIST;
 
@@ -429,7 +429,7 @@ static int ext2_mkdir(const char *path, mode_t mode) {
  */
 static int ext2_rename(const char *oldpath, const char *newpath) {
 
-  /* TO BE COMPLETED BY THE STUDENT */
+
 
   // printf("Passed in newpath: %s\n", newpath);
   // printf("Passed in oldpath: %s\n", oldpath);
